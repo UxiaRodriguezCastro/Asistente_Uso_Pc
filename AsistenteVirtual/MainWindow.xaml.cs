@@ -42,6 +42,8 @@ namespace AsistenteVirtual
                         UseWord.selectedoption(CB_elegir.SelectedIndex, TB_Plus.Text);
                         break;
                     case 2:
+                        Files.Clear();
+                      
                         Files=UseDirectory.selectedoption(CB_elegir.SelectedIndex,TB_Plus.Text);
                         if (Files.Count>0 && CB_elegir.SelectedIndex==0)
                         {
@@ -125,6 +127,8 @@ namespace AsistenteVirtual
             else if (CB_Programas.SelectedIndex == 2 && CB_elegir.SelectedIndex == 0)
             {
                 TB_Plus.Visibility = Visibility.Visible;
+                Files.Clear();
+                CB_Plus.ItemsSource = null;
             }
         }
 
@@ -145,6 +149,7 @@ namespace AsistenteVirtual
                     catch (Exception)
                     {
                         MessageBox.Show("Hubo un problema al abrir el archivo", "¡Oh hubo un problema!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        altcleanselection();
 
                     }
                   
@@ -173,24 +178,26 @@ namespace AsistenteVirtual
 
         public void cleanselection()
         {
+            CB_Programas.SelectedItem=null;
             CB_elegir.ItemsSource = null;
-            CB_Programas.SelectedIndex = -1;
-            CB_Plus.ItemsSource = null;
             TB_Plus.Text = null;
-            Files.Clear();
+            CB_Plus.ItemsSource = null;
+            CB_Plus.Items.Clear();
             TB_Plus.Visibility = Visibility.Hidden;
             CB_Plus.Visibility = Visibility.Hidden;
+            Files.Clear();
         }
 
 
         public void altcleanselection()
         {
             CB_elegir.ItemsSource = null;
-            CB_Plus.ItemsSource = null;
             TB_Plus.Text = null;
-            Files.Clear();
+            CB_Plus.ItemsSource = null;
+            CB_Plus.Items.Clear();
             TB_Plus.Visibility = Visibility.Hidden;
             CB_Plus.Visibility = Visibility.Hidden;
+            Files.Clear();
         }
 
        
