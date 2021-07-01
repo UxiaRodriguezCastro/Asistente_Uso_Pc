@@ -11,6 +11,7 @@ namespace AsistenteVirtual
 
         public List<String> findfile(String filename, String identity)
         {
+            List<String> Files = new List<string>();
             try
             {
                 String[] username= new String[50];
@@ -26,7 +27,7 @@ namespace AsistenteVirtual
                 String filenamecontains = "*" + filename + "*";
                 string[] DeskFiles = Directory.GetFiles(@"c:\Users\"+username[1]+"\\Desktop", filenamecontains+ ".*", SearchOption.AllDirectories);
                 string[] DowloadFiles = Directory.GetFiles(@"c:\Users\" + username[1] + "\\Downloads", filenamecontains + ".*", SearchOption.AllDirectories);
-                List<String> Files= new List<string>();
+                
                 if (DeskFiles.Length>0)
                 {
                     foreach (string file in DeskFiles)
@@ -45,8 +46,8 @@ namespace AsistenteVirtual
             }
             catch (Exception e)
             {
-                MessageBox.Show("Hubo un problema al buscar el archivo", "", MessageBoxButton.OK);
-                throw;
+                MessageBox.Show("Hubo un problema al buscar el archivo", "¡Oh hubo un problema!", MessageBoxButton.OK);
+                return Files;
             }
            
         }
@@ -65,8 +66,8 @@ namespace AsistenteVirtual
             catch (Exception)
             {
 
-                MessageBox.Show("Hubo un problema al abrir el archivo", "", MessageBoxButton.OK);
-                throw;
+                MessageBox.Show("Hubo un problema al abrir el archivo", "¡Oh hubo un problema!", MessageBoxButton.OK,MessageBoxImage.Error);
+                
             }
             return result;
         }

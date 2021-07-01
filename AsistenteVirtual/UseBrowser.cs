@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace AsistenteVirtual
@@ -21,7 +18,7 @@ namespace AsistenteVirtual
 			{
 				//Console.WriteLine(e.ToString());
 				MessageBox.Show("Hubo un problema con su busqueda", "ERROR", MessageBoxButton.OK);
-				throw;
+				
 			}
         }
 

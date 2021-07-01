@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace AsistenteVirtual
 {
@@ -56,7 +46,7 @@ namespace AsistenteVirtual
                         if (Files.Count>0 && CB_elegir.SelectedIndex==0)
                         {
                             erase = false;
-                            MessageBox.Show("Se han encontrado archivos con el nombre introducido o similar. Seleccione el que quiere abrir en el desplegable", "Archivos encontrados", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Se han encontrado archivos con el nombre introducido o similar.\nSeleccione el que quiere abrir en el desplegable que aparacerá ahora", "Archivos encontrados", MessageBoxButton.OK, MessageBoxImage.Information);
                             if (CB_elegir.SelectedIndex==0)
                             {
                                 TB_Plus.Visibility = Visibility.Hidden;
@@ -73,17 +63,17 @@ namespace AsistenteVirtual
                         else if(Files.Count==0 && CB_elegir.SelectedIndex == 0)
                         {
                             erase = false;
-                            MessageBox.Show("No se han encontrado archivos con ese nombre. Intentelo de nuevo", "Archivos no encontrados", MessageBoxButton.OK,MessageBoxImage.Warning);
+                            MessageBox.Show("No se han encontrado archivos con ese nombre.\nIntentelo de nuevo", "Archivos no encontrados", MessageBoxButton.OK,MessageBoxImage.Warning);
                         }
                         break;
                     default:
-                        MessageBox.Show("Si no sabe como usar el asistente solo pulse el boton azul de arriba","¿Problemas?",MessageBoxButton.OK);
+                        MessageBox.Show("Si no sabe como usar el asistente solo pulse el boton azul de arriba","¿Problemas?",MessageBoxButton.OK,MessageBoxImage.Information);
                         break;
                 }
             }
             else
             {
-                MessageBox.Show( "Si no sabe como usar el asistente solo pulse el boton azul de arriba", "¿Problemas?", MessageBoxButton.OK);
+                MessageBox.Show( "Si no sabe como usar el asistente solo pulse el boton azul de arriba", "¿Problemas?", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
 
@@ -144,11 +134,20 @@ namespace AsistenteVirtual
             {
                 if (CB_Programas.SelectedIndex == 2 && CB_elegir.SelectedIndex == 0)
                 {
-                   bool result= UseDirectory.openFile(Files[CB_Plus.SelectedIndex]);
-                    if (result==true)
+                    try
                     {
-                        cleanselection();
+                        bool result = UseDirectory.openFile(Files[CB_Plus.SelectedIndex]);
+                        if (result == true)
+                        {
+                            cleanselection();
+                        }
                     }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Hubo un problema al abrir el archivo", "¡Oh hubo un problema!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
+                  
                 }
             }
         }
