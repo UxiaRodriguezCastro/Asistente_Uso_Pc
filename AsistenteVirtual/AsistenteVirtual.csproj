@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="UseBrowser.cs" />
+    <Compile Include="UseDirectory.cs" />
     <Compile Include="UseWord.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

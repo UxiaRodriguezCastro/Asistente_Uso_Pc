@@ -12,7 +12,7 @@
 
         <Label x:Name="TITULO_1" Content="¿COMO PUEDO AYUDARLE?" HorizontalAlignment="Left" Margin="35,32,0,0" VerticalAlignment="Top" Height="64" Width="526" FontSize="36"/>
         <TextBox x:Name="TB_escribir" HorizontalAlignment="Left" Height="44" TextWrapping="Wrap" VerticalAlignment="Top" Width="599" Margin="64,305,0,0" FontSize="20" Visibility="Hidden"/>
-        <ComboBox x:Name="CB_Programas" HorizontalAlignment="Left" Margin="64,152,0,0" VerticalAlignment="Top" Width="316" Height="38" FontSize="20" SelectionChanged="CB_Programas_SelectionChanged"/>
+        <ComboBox x:Name="CB_Programas" HorizontalAlignment="Left" Margin="64,152,0,0" VerticalAlignment="Top" Width="416" Height="38" FontSize="20" SelectionChanged="CB_Programas_SelectionChanged"/>
         <Label x:Name="Programa_label" Content="QUIERO" HorizontalAlignment="Left" Margin="64,110,0,0" VerticalAlignment="Top" FontSize="20"/>
         <ComboBox x:Name="CB_elegir" HorizontalAlignment="Left" Margin="64,278,0,0" VerticalAlignment="Top" Width="599" Height="44" FontSize="20" SelectionChanged="CB_elegir_SelectionChanged"/>
         <Button x:Name="BT_Buscar" Margin="684,267,52,97" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="BT_Buscar_Click" >
@@ -20,12 +20,13 @@
             <Image Source="Iconos\lupa.png" RenderTransformOrigin="3.923,1.808" Height="41" Width="51"></Image>
         </Button>
 
-        <Button x:Name="BT_Question" Margin="402,146,342,237" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="BT_Question_Click">
+        <Button x:Name="BT_Question" Margin="498,144,246,239" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="BT_Question_Click">
 
             <Image Source="Iconos\question.png" RenderTransformOrigin="3.923,1.808" Height="28" Width="46"></Image>
         </Button>
         <Label x:Name="Accion_label" Content="PARA..." HorizontalAlignment="Left" Margin="64,220,0,0" VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="TB_Plus" HorizontalAlignment="Left" Height="36" Margin="64,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="599" FontSize="20" Visibility="Hidden"/>
+        <ComboBox x:Name="CB_Plus" HorizontalAlignment="Left" Margin="64,335,0,0" VerticalAlignment="Top" Width="599" Height="36" FontSize="20" SelectionChanged="CB_Plus_SelectionChanged" Visibility="Hidden"/>
 
     </Grid>
 </Window>

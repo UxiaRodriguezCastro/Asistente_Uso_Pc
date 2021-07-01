@@ -29,8 +29,9 @@ namespace AsistenteVirtual
 		{
 			List<String> googleaccions = new List<string>() { 
 			"Buscar algo en internet",
+			"Buscar y ver un video",
 			"Leer el periodico de hoy",
-			"Pedir cita médica",
+			"Pedir cita médica (SERGAS)",
 			"Pedir cita para renovación del DNI",
 			"Pedir cita para renovación del Carnet de conducir",
 			"Pedir cita en la Agencia Tributaria"};
@@ -46,18 +47,21 @@ namespace AsistenteVirtual
 					openGoogle("https://www.google.es");
 					break;
 				case 1:
-					openGoogle("https://www.google.com/search?q=leer+periodico+de+hoy");
+					openGoogle("https://www.youtube.com/");
 					break;
 				case 2:
-					openGoogle("https://www.sergas.es/Asistencia-sanitaria/Cita-previa-atenci%C3%B3n-primaria");
+					openGoogle("https://www.google.com/search?q=leer+periodico+de+hoy");
 					break;
 				case 3:
-					openGoogle("https://www.citapreviadnie.es/citaPreviaDniExp/");
+					openGoogle("https://www.sergas.es/Asistencia-sanitaria/Cita-previa-atenci%C3%B3n-primaria");
 					break;
 				case 4:
-					openGoogle("https://sede.dgt.gob.es/es/permisos-de-conducir/obtencion-renovacion-duplicados-permiso/renovacion-permiso-licencia/index.shtml#");
+					openGoogle("https://www.citapreviadnie.es/citaPreviaDniExp/");
 					break;
 				case 5:
+					openGoogle("https://sede.dgt.gob.es/es/permisos-de-conducir/obtencion-renovacion-duplicados-permiso/renovacion-permiso-licencia/index.shtml#");
+					break;
+				case 6:
 					openGoogle("https://www2.agenciatributaria.gob.es/wlpl/TOCP-MUTE/Identificacion");
 					break;
 				default:
