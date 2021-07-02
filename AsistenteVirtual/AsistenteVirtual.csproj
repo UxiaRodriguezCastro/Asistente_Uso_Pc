@@ -138,5 +138,8 @@
   <ItemGroup>
     <Resource Include="Iconos\help.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\pencil.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,19 +20,44 @@ namespace AsistenteVirtual
             ref oMissing, ref oMissing);
         }
 
-        public void createNewDocumentWithTable(String filas, String columnas)
+        public bool createNewDocumentWithTable(String filas, String columnas)
         {
             int Filas = 5;
             int Columnas = 5;
+            bool result = true;
             try
             {
                 Filas = int.Parse(filas);
                 Columnas = int.Parse(columnas);
+                
+                if (Filas==0||Columnas==0)
+                {
+                    MessageBox.Show("Error al comprobar el número de filas y columnas.\nUna tabla debe tener como mínimo una fila y una columna", "¡Oh hubo un problema!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    result = false;
+                }
+                else
+                {
+                    dodocwithtable(Filas, Columnas);
+                }
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al comprobar el número de filas y columnas, puede que haya introducido algo que no es un número.\n\nSe creará una tabla de 5 filas y 5 columnas", "¡Oh hubo un problema!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (MessageBox.Show("Error al comprobar el número de filas y columnas, puede que haya introducido algo que no es un número.\n\n¿Quiere crear en su lugar una tabla de 5 filas y 5 columnas?", "¡Oh hubo un problema!", MessageBoxButton.YesNo, MessageBoxImage.Question)==MessageBoxResult.Yes)
+                {
+                    dodocwithtable(Filas, Columnas);
+                    
+                }
+                else
+                {
+                    result = false;
+                }
             }
+
+            return result;
+        }
+
+        public void dodocwithtable(int Filas, int Columnas)
+        {
             try
             {
                 Microsoft.Office.Interop.Word._Application oWord;
@@ -52,12 +77,9 @@ namespace AsistenteVirtual
             {
 
 
-                MessageBox.Show("El programa no está disponible en su ordenador o ha habido un problema", "Lo siento...", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Puede que el programa no esté disponible en su ordenador o haya un problema", "Lo siento...", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-           
         }
-
-
         public List<String> doWithWord()
         {
             List<String> wordactions = new List<string>() {
@@ -67,9 +89,9 @@ namespace AsistenteVirtual
             return wordactions;
         }
 
-        public void selectedoption(int option, string tb)
+        public bool selectedoption(int option, string tb)
         {
-
+            bool result = true;
             switch (option)
             {
                 case 0:
@@ -79,7 +101,7 @@ namespace AsistenteVirtual
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("El programa no está disponible en su ordenador o ha habido un problema", "Lo siento...", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Puede que el programa no esté disponible en su ordenador o haya un problema", "Lo siento...", MessageBoxButton.OK, MessageBoxImage.Error);
                         
                     }
                     
@@ -89,13 +111,19 @@ namespace AsistenteVirtual
                         string[] words = tb.Split(' ');
                         if (words.Length==4)
                         {
-                            this.createNewDocumentWithTable(words[1], words[3]);
+                            result=this.createNewDocumentWithTable(words[1], words[3]);
                         }
                         else
                         {
-                            MessageBox.Show("Error al comprobar el número de filas y columnas.\nSe creará una tabla de 5 filas y 5 columnas", "¡Oh hubo un problema!", MessageBoxButton.OK, MessageBoxImage.Error);
-                            this.createNewDocumentWithTable("5", "5");
+                        if (MessageBox.Show("Error al comprobar el número de filas y columnas, puede que haya introducido algo que no es un número.\n\n¿Quiere crear en su lugar una tabla de 5 filas y 5 columnas?", "¡Oh hubo un problema!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        {
+                            dodocwithtable(5,5);
                         }
+                        else
+                        {
+                            result = false;
+                        }
+                    }
                     
                    
                     break;
@@ -103,6 +131,7 @@ namespace AsistenteVirtual
                     MessageBox.Show("Si no sabe como usar el asistente solo pulse el boton azul de arriba", "¿Problemas?", MessageBoxButton.OK);
                     break;
             }
+            return result;
         }
     }
 }
