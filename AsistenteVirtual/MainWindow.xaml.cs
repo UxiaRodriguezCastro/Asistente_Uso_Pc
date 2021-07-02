@@ -39,7 +39,7 @@ namespace AsistenteVirtual
                         UseGoogle.selectedoption(CB_elegir.SelectedIndex);
                         break;
                     case 1:
-                        UseWord.selectedoption(CB_elegir.SelectedIndex, TB_Plus.Text);
+                        erase=UseWord.selectedoption(CB_elegir.SelectedIndex, TB_Plus.Text);
                         break;
                     case 2:
                         Files.Clear();
@@ -48,11 +48,12 @@ namespace AsistenteVirtual
                         if (Files.Count>0 && CB_elegir.SelectedIndex==0)
                         {
                             erase = false;
-                            MessageBox.Show("Se han encontrado archivos con el nombre introducido o similar.\nSeleccione el que quiere abrir en el desplegable que aparacerá ahora", "Archivos encontrados", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Se han encontrado archivos con el nombre introducido o similar. Seleccione el que quiere abrir en el desplegable que aparacerá ahora.\n\nSi desea hacer otra búsqueda, pulse el lápiz", "Archivos encontrados", MessageBoxButton.OK, MessageBoxImage.Information);
                             if (CB_elegir.SelectedIndex==0)
                             {
                                 TB_Plus.Visibility = Visibility.Hidden;
                                 CB_Plus.Visibility = Visibility.Visible;
+                                BT_edit.Visibility = Visibility.Visible;
                                 foreach (String item in Files)
                                 {
                                     string[] doc = item.Split('\\');
@@ -111,7 +112,7 @@ namespace AsistenteVirtual
         private void BT_Question_Click(object sender, RoutedEventArgs e)
         {
 
-            MessageBox.Show("Este programa ha sido creado para hacerle mas sencillo el uso de su ordenador.\n\n INSTRUCCIONES DE USO:\n\n1) SELECCIONE EL PROGRAMA QUE USTED QUIERA USAR\n2) SELECCIONE QUE QUIERE HACER\n3) DELE AL BOTON DE LA LUPA\n\nOPCIONAL:\nHabrá veces que se le pedirá escribir información de una forma concreta, solo cubrala EXACTAMENTE como se le indique en el ejemplo", "¿Como uso el asistente?", MessageBoxButton.OK);
+            MessageBox.Show("Este programa ha sido creado para hacerle mas sencillo el uso de su ordenador.\n\nINSTRUCCIONES DE USO:\n\n1) SELECCIONE EL PROGRAMA QUE USTED QUIERA USAR\n\n2) SELECCIONE QUE QUIERE HACER\n\n3) DELE AL BOTON DE LA LUPA\n\n\nINSTRUCIONES ADICIONALES:\n\n- Habrá veces que se le pedirá escribir información de una forma concreta, solo cubrala EXACTAMENTE como se le indique en el ejemplo\n\n- El boton con forma de lapiz le permitirá editar lo que haya escrito", "¿Como uso el asistente?", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
 
@@ -144,6 +145,7 @@ namespace AsistenteVirtual
                         if (result == true)
                         {
                             cleanselection();
+                            
                         }
                     }
                     catch (Exception)
@@ -155,6 +157,15 @@ namespace AsistenteVirtual
                   
                 }
             }
+        }
+
+        private void BT_edit_Click(object sender, RoutedEventArgs e)
+        {
+            CB_Plus.ItemsSource = null;
+            CB_Plus.Items.Clear();
+            TB_Plus.Visibility = Visibility.Visible;
+            CB_Plus.Visibility = Visibility.Hidden;
+            Files.Clear();
         }
 
         #region PROGRAMS
@@ -185,6 +196,7 @@ namespace AsistenteVirtual
             CB_Plus.Items.Clear();
             TB_Plus.Visibility = Visibility.Hidden;
             CB_Plus.Visibility = Visibility.Hidden;
+            BT_edit.Visibility = Visibility.Hidden;
             Files.Clear();
         }
 
@@ -197,9 +209,10 @@ namespace AsistenteVirtual
             CB_Plus.Items.Clear();
             TB_Plus.Visibility = Visibility.Hidden;
             CB_Plus.Visibility = Visibility.Hidden;
+            BT_edit.Visibility = Visibility.Hidden;
             Files.Clear();
         }
 
-       
+
     }
 }

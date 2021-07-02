@@ -15,9 +15,9 @@
         <ComboBox x:Name="CB_Programas" HorizontalAlignment="Left" Margin="64,152,0,0" VerticalAlignment="Top" Width="416" Height="38" FontSize="20" SelectionChanged="CB_Programas_SelectionChanged"/>
         <Label x:Name="Programa_label" Content="QUIERO" HorizontalAlignment="Left" Margin="64,110,0,0" VerticalAlignment="Top" FontSize="20"/>
         <ComboBox x:Name="CB_elegir" HorizontalAlignment="Left" Margin="64,278,0,0" VerticalAlignment="Top" Width="599" Height="44" FontSize="20" SelectionChanged="CB_elegir_SelectionChanged"/>
-        <Button x:Name="BT_Buscar" Margin="684,267,52,97" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="BT_Buscar_Click" >
+        <Button x:Name="BT_Buscar" Margin="683,272,53,105" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="BT_Buscar_Click" >
 
-            <Image Source="Iconos\lupa.png" RenderTransformOrigin="3.923,1.808" Height="41" Width="51"></Image>
+            <Image Source="Iconos\lupa.png" RenderTransformOrigin="3.923,1.808" Height="45" Width="52"></Image>
         </Button>
 
         <Button x:Name="BT_Question" Margin="498,144,246,239" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="BT_Question_Click">
@@ -27,6 +27,10 @@
         <Label x:Name="Accion_label" Content="PARA..." HorizontalAlignment="Left" Margin="64,220,0,0" VerticalAlignment="Top" FontSize="20"/>
         <TextBox x:Name="TB_Plus" HorizontalAlignment="Left" Height="36" Margin="64,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="599" FontSize="20" Visibility="Hidden"/>
         <ComboBox x:Name="CB_Plus" HorizontalAlignment="Left" Margin="64,335,0,0" VerticalAlignment="Top" Width="599" Height="36" FontSize="20" SelectionChanged="CB_Plus_SelectionChanged" Visibility="Hidden"/>
+        <Button x:Name="BT_edit" Margin="690,335,58,53" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Click="BT_edit_Click" Visibility="Hidden">
+
+            <Image Source="Iconos/pencil.png" RenderTransformOrigin="3.923,1.808" Height="36" Width="42"/>
+        </Button>
 
     </Grid>
 </Window>
