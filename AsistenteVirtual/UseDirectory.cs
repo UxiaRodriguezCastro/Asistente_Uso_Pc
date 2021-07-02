@@ -9,7 +9,7 @@ namespace AsistenteVirtual
     public class UseDirectory
     {
 
-        public List<String> findfile(String filename, String identity)
+        public List<String> findfile(String filename, String identity,string desk,string downloads)
         {
             List<String> Files = new List<string>();
             try
@@ -25,8 +25,9 @@ namespace AsistenteVirtual
                     username[1]=identity;
                 }
                 String filenamecontains = "*" + filename + "*";
-                string[] DeskFiles = Directory.GetFiles(@"c:\Users\"+username[1]+"\\Desktop", filenamecontains+ ".*", SearchOption.AllDirectories);
-                string[] DowloadFiles = Directory.GetFiles(@"c:\Users\" + username[1] + "\\Downloads", filenamecontains + ".*", SearchOption.AllDirectories);
+               
+                string[] DeskFiles = Directory.GetFiles(@""+desk,filenamecontains + ".*", SearchOption.AllDirectories);
+                string[] DowloadFiles = Directory.GetFiles(@""+downloads, filenamecontains + ".*", SearchOption.AllDirectories);
                 
                 if (DeskFiles.Length>0)
                 {
@@ -87,6 +88,8 @@ namespace AsistenteVirtual
 		{
             List<String> Files= new List<string>();
             string identity = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            string deskPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
             String[] username = new String[50];
             try
             {
@@ -100,13 +103,13 @@ namespace AsistenteVirtual
             switch (option)
 			{
 				case 0:
-                    Files=this.findfile(name,identity);
+                    Files=this.findfile(name,identity,deskPath,downloadsPath);
                     break;
                 case 1:
-                    openFile(@"c:\Users\" + username[1] + "\\Desktop");
+                    openFile(deskPath);
                     break;
                 case 2:
-                    openFile(@"c:\Users\" + username[1] + "\\Downloads");
+                    openFile(downloadsPath);
                     break;
                 default:
 					MessageBox.Show("Si no sabe como usar el asistente solo pulse el boton azul de arriba", "¿Problemas?", MessageBoxButton.OK);
